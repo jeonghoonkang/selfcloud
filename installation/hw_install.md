@@ -1,5 +1,8 @@
 # selfcloud 하드웨어 조립
 
+# PIRONMAN5 하드웨어 조립 방법
+  - [조립방법](PIRONMAN5_Assembly_instructions.pdf)
+
 - <img width="800" alt="image" src="https://github.com/jeonghoonkang/selfcloud/assets/4180063/a9088c86-22a6-474b-ac08-cd082944676b">
 
 
