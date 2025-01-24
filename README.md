@@ -4,7 +4,7 @@
 - It supports Home-scale(in-house) cloud system which based on RaspberryPi5 and Ubuntu OS system
 - Web page : http://ssncloud.iptime.org:8888
 
-## RaspberryPi 5 with NVMe booting, it has very good booting speed
+## RaspberryPi 5 with NVMe booting, it has enough booting speed
 - High speed, quite enough performance for personal and family cloud system
 - Also name is SSDPi Ver.2.0 (as of 2024.3) on the web page which is same hardware and software
 
