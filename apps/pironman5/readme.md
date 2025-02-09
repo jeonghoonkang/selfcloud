@@ -21,3 +21,8 @@ sudo python3 install.py
 
 - Web dashboard port : 34001
 - influxdb : 8086
+
+## pm_auto.py modification
+- what to do : replace pm_auto.py file which is installed by pironman5 installation
+- location dir : /opt/pironman5/venv/lib/python3.12/site-packages/pm_auto
+- which shows different displays 
