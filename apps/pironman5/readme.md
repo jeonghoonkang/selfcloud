@@ -24,5 +24,6 @@ sudo python3 install.py
 
 ## pm_auto.py modification
 - what to do : replace pm_auto.py file which is installed by pironman5 installation
+- download : https://raw.githubusercontent.com/jeonghoonkang/selfcloud/refs/heads/main/apps/pironman5/pm_auto.py
 - location dir : /opt/pironman5/venv/lib/python3.12/site-packages/pm_auto
 - which shows different displays 
