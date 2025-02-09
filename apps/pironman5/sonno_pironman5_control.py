@@ -3,6 +3,10 @@
 
 from pm_auto.pm_auto import PMAuto
 
+### This file run by sudo crontab
+### @reboot python3 /home/***/selfcloud/devel_opment/pironman5/sonno_oled.py
+
+
 config = {
   "peripherals": ['oled','ws2812',],
 }
