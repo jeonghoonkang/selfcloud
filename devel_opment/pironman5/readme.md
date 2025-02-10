@@ -9,6 +9,7 @@ Sunfounder 드라이버를 서비스로 등록하지 않고,
 
 ### run
 - PMAuto class which will run peripherals
+  - just one shot for the driver run
 - <code> sudo python3 sonno_oled.py </code>
   
 ## Before installation
