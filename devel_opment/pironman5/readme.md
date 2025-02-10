@@ -2,13 +2,14 @@
 - using open source, pmauto, sf_rpi_status
   - https://github.com/sunfounder/pm_auto
   - util : https://github.com/sunfounder/sf_rpi_status
+
 ### run
 - PMAuto class which will run peripherals
 - <code> sudo python3 sonno_oled.py </code>
   
 ## Before installation
 ### require to install, example CLI
-- pm_auto git clone 후, 위치 이동 해야함
+- <code>pm_auto</code>, <code>sf_rpi_status</code> git clone 후, 위치 이동 해야함
 <pre>
 mv pm_auto_main/pm_auto/ .
 mv sf_rpi_status_main/sf_rpi_status/ ./
