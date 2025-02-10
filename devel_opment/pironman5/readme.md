@@ -12,7 +12,7 @@ Sunfounder 드라이버를 서비스로 등록하지 않고,
   - just one shot for the driver run
 - <code> sudo python3 sonno_oled.py </code>
   
-## Before installation
+## Prepare, for installation, follow below
 ### require to install, example CLI
 - <code>pm_auto</code>, <code>sf_rpi_status</code> git clone 후, 위치 이동 해야함
 <pre>
