@@ -27,6 +27,9 @@ sudo pip3 install adafruit-circuitpython-neopixel-spi
 sudo apt-get install python3-dev 
 sudo apt-get install python3-rpi.gpio
 </pre>
+
+### Thread 실행, One Shot 실행
+- Thread 실행, One Shot 실행 파일 다름 
     
 ### Code modification
 - pm_auto.py
