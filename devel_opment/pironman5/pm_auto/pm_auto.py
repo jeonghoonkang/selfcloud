@@ -65,13 +65,14 @@ class PMAuto():
             self.spc = SPCAuto(get_logger=get_logger)
         self.peripherals = peripherals
 
-        self.interval = 1
+        self.interval = 10
     
         self.thread = None
         self.running = False
 
         self.update_config(config)
         self.__on_state_changed__ = None
+
     
     @log_error
     def set_on_state_changed(self, callback):
@@ -172,6 +173,8 @@ class OLEDAuto():
         if 'oled_rotation' in config:
             self.set_rotation(config['oled_rotation'])
 
+        self.disp_date = None
+
     def set_rotation(self, rotation):
         self.oled.set_rotation(rotation)
 
@@ -247,9 +250,22 @@ class OLEDAuto():
         # Disk
         self.oled.draw_text(f'DISK: {disk_used}/{disk_total} {disk_unit}', *disk_info_rect.coord())
         self.oled.draw_bar_graph_horizontal(disk_percent, *disk_rect.coord(), *disk_rect.size())
+
         # IP
-        self.oled.draw.rectangle((ip_rect.x,ip_rect.y,ip_rect.x+ip_rect.width,ip_rect.height), outline=1, fill=1)
-        self.oled.draw_text(ip, *ip_rect.topcenter(), fill=0, align='center')
+        #self.oled.draw.rectangle((ip_rect.x,ip_rect.y,ip_rect.x+ip_rect.width,ip_rect.height), outline=1, fill=1)
+        #self.oled.draw_text(ip, *ip_rect.topcenter(), fill=0, align='center')
+
+        ip_rect_left =           self.Rect(66, 0, 88, 10)
+        self.oled.draw_text(ip, *ip_rect_left.coord(), align='left') 
+
+        #jhkang IP address modify 
+        from datetime import datetime 
+        now = datetime.now()
+        if self.disp_date == None :
+            self.disp_date = now.date()
+        self.oled.draw_text(self.disp_date, 1, 0, align='left')
+
+
         # draw the image buffer
         self.oled.display()
 

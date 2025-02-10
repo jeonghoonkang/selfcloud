@@ -1,0 +1,1 @@
+cd /opt/pironman5/venv/lib/python3.12/site-packages/pm_auto && wget https://raw.githubusercontent.com/jeonghoonkang/selfcloud/refs/heads/main/apps/pironman5/pm_auto.py && ls -l /opt/pironman5/venv/lib/python3.12/site-packages/pm_auto 
