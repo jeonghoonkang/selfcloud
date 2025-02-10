@@ -27,3 +27,6 @@ sudo python3 install.py
 - download : https://raw.githubusercontent.com/jeonghoonkang/selfcloud/refs/heads/main/apps/pironman5/pm_auto.py
 - location dir : /opt/pironman5/venv/lib/python3.12/site-packages/pm_auto
 - which shows different displays 
+
+## OLED size
+- ![image](https://github.com/user-attachments/assets/484dfc7d-4c47-4061-be40-3ac90994206e)
