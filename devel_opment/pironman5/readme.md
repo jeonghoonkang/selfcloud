@@ -8,6 +8,7 @@
   
 ## Before installation
 ### require to install, example CLI
+- pm_auto git clone 후, 위치 이동 해야함
 <pre>
 mv pm_auto_main/pm_auto/ .
 mv sf_rpi_status_main/sf_rpi_status/ ./
