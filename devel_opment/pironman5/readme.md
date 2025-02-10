@@ -1,4 +1,8 @@
 ## Driver from Sunfounder 
+<pre>
+Sunfounder 드라이버를 서비스로 등록하지 않고,
+로컬 응용SW 영역에서 실행하도록 설정하는 방법 
+</pre>
 - using open source, pmauto, sf_rpi_status
   - https://github.com/sunfounder/pm_auto
   - util : https://github.com/sunfounder/sf_rpi_status
