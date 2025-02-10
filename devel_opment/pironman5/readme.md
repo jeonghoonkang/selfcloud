@@ -12,7 +12,7 @@ Sunfounder 드라이버를 서비스로 등록하지 않고,
   - just one shot for the driver run
 - <code> sudo python3 sonno_oled.py </code>
 - in the sudo crontab
-  <code>@reboot sleep 20 && python3 /home/***/devel_opment/selfcloud/devel_opment/pironman5/sonno_oled.py</code>
+  - <code>@reboot sleep 20 && python3 /home/***/devel_opment/selfcloud/devel_opment/pironman5/sonno_oled.py</code>
   
 ## Prepare, for installation, follow below
 ### require to install, example CLI
