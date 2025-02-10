@@ -30,7 +30,7 @@ sudo apt-get install python3-rpi.gpio
 
 ### Thread 실행, One Shot 실행
 - Thread 실행, One Shot 실행 파일 다름
-- <code> sonno_all_thread.py, sonno_oled.py </code>
+- <code>sonno_all_thread.py, sonno_oled.py</code>
     
 ### Code modification
 - pm_auto.py
