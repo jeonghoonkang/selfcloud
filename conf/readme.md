@@ -1,5 +1,6 @@
 # Configuration for the Self Cloud Machine
 
+## Crontab 
 <pre>
 @reboot sleep 60 && date >> /home/****/booted/boot_time.txt       
                                                        
