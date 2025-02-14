@@ -34,6 +34,21 @@ def berelog(msg_name, value=None):
     elif (value != None):
         logger.info(msg_name + ' ==> ' + value)
 
+
+
+# overload API for outside 
+def berelog(msg_name, value=None, sensor_type=None):
+    if sensor_type != None:
+        sensor_type = '_' + sensor_type
+
+    LOG_FILENAME = BNAME + "selfcloud/apps/log/" + "berelogger" + sensor_type + ".log"
+    print ("logging to", LOG_FILENAME, 'log file name')
+    if (value == None):
+        logger.info(msg_name )
+    elif (value != None):
+        logger.info(msg_name + ' ==> ' + value)
+
+
 def args_proc():
  
     num_of_args = len(sys.argv)

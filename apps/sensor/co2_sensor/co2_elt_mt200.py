@@ -41,7 +41,8 @@ def find_ppm(ins):
 def pass2file(ins):
     print("...logging...", )
     print(time.strftime("%Y-%m-%d %H:%M"),)  
-    berepi_logger.berelog('co2 ppm', str(ins))
+    sensor_type='CO2'
+    berepi_logger.berelog('co2 ppm', str(ins), sensor_type)
 
 if __name__ == "__main__":
     if len(sys.argv) > 1 :
@@ -59,7 +60,7 @@ if __name__ == "__main__":
     
     print (ppm)
 
-    #pass2file(ppm)
+    pass2file(ppm)
 
     exit(__file__ + " all done...")
     
