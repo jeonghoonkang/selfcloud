@@ -4,6 +4,10 @@
 # http://www.eltsensor.co.kr/products-by-gas/co2/ndir/monitor?tpf=product/view&category_code=101012&code=22
 # Mac OSX /dev/cu.usbserial-D200A1RU 
 
+# sudo python3 $(realpath ./co2_elt_mt200.py)
+# sudo crontab 
+# */3 * * * *     python3 /home/***t/selfcloud/apps/sensor/co2_sensor/co2_elt_mt200.py
+
 import serial
 import time
 import sys
