@@ -43,27 +43,8 @@ class selfdatalogger:
         if (value == None):
             self.logger.info(msg_name )
         elif (value != None):
-            self.logger.info(msg_name + ' ==> ' + value)
+            self.logger.info( sensor_type + msg_name + ' ==> ' + value)
             print ("logging to", self.LOG_FILENAME, 'log file name', value)
-
-
-# # overload API for outside 
-# def berelog(msg_name, value=None, sensor_type=None):
-#     if sensor_type != None:
-#         sensor_type = '_' + sensor_type
-
-#     LOG_FILENAME = BNAME + "/log/" + "berelogger" + sensor_type + ".log"
-
-#     if not os.path.exists(LOG_FILENAME):
-#         with open(LOG_FILENAME, 'w') as file :
-#             file.close()
-
-#     print ("logging to", LOG_FILENAME, 'log file name')
-
-#     if (value == None):
-#         logger.info(msg_name )
-#     elif (value != None):
-#         logger.info(msg_name + ' ==> ' + value)
 
 
 def args_proc():
