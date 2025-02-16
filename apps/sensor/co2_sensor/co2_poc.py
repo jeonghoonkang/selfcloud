@@ -4,9 +4,9 @@
 # http://www.eltsensor.co.kr/products-by-gas/co2/ndir/monitor?tpf=product/view&category_code=101012&code=22
 # Mac OSX /dev/cu.usbserial-D200A1RU 
 
-# sudo python3 $(realpath ./co2_elt_mt200.py)
+# sudo python3 $(realpath ./co2_poc.py)
 # sudo crontab 
-# */3 * * * *     python3 /home/***t/selfcloud/apps/sensor/co2_sensor/co2_elt_mt200.py
+# */3 * * * *     python3 /home/***t/selfcloud/apps/sensor/co2_sensor/co2_poc.py
 
 import serial
 import time
@@ -22,6 +22,7 @@ import berepi_logger
 
 def find_ppm(ins):
     print ('RAW string',ins)
+    exit(0)
     ix = ins.find(10) #find '/n' 
     #print ('ix', ix, type(ix), ins[ix:ix+1])
 
@@ -45,7 +46,7 @@ def find_ppm(ins):
 def pass2file(ins):
     print("...logging...", )
     print(time.strftime("%Y-%m-%d %H:%M"),)  
-    sensor_type='CO2_ELT_MT200'
+    sensor_type='CO2_POC'
     berepi_logger.berelog('co2 ppm', str(ins), sensor_type)
 
 if __name__ == "__main__":
@@ -56,11 +57,12 @@ if __name__ == "__main__":
         print ("using port ", port)
         
     print (' open port ', port )
-    op = serial.Serial(port, baudrate=38400, rtscts=True)
+    op = serial.Serial(port, baudrate=9600, rtscts=True)
     time.sleep(3) 
 
-    in_string = op.read(32)
-   
+    rq_str = b"\xF1\xF2\x01\x1C"
+    in_string = op.write(rq_str)
+
     ppm = find_ppm(in_string)
     
     print (ppm)
