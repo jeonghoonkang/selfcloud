@@ -22,22 +22,17 @@ import berepi_logger
 
 def find_ppm(ins):
     print ('RAW string',ins)
-    exit(0)
-    ix = ins.find(10) #find '/n' 
+    
+    #ix = ins.find(10) #find '/n' 
     #print ('ix', ix, type(ix), ins[ix:ix+1])
 
-    multi = 0
-    loop = 0
     stnum = 0
-
-    for ch in ins[ix+1:ix+7]:
-        #print (ch) #check if ASCII code
-        loop += 1
-        multi = int (1000000 / (10**loop))
-        #print (multi)
-        if (ch != 32): #find not space character
-            stnum += ((ch-48) * multi)
-
+    if ins[0] == 0xF1 and ins[1] == 0xF2 and ins[2] == 0x02 :
+        stnum = ins[3] * 256 + ins[4]
+    else :
+        print ('error in data')
+        return None
+                
     ret = stnum
     print ('...', stnum, 'ppm') #ppm print
     return ret
@@ -61,13 +56,19 @@ if __name__ == "__main__":
     time.sleep(3) 
 
     rq_str = b"\xF1\xF2\x01\x1C"
-    in_string = op.write(rq_str)
-
+    op.write(rq_str)
+    in_string = op.read(size=8)
     ppm = find_ppm(in_string)
+
+    if ppm == None :
+        in_string = op.read(size=8)
+        ppm = find_ppm(in_string)
     
-    print (ppm)
+    if ppm == None :
+        print ('error in data')
+        exit(__file__ + " [X] error in data")
 
     pass2file(ppm)
 
-    exit(__file__ + " all done...")
+    exit(__file__ + " [O] all done...")
     
