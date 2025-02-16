@@ -3,11 +3,10 @@
 
 ## 프로토콜
 
-- ELT MT200
-  - ELT CO2 센서
+- ELT MT200 센서
   - www.eltsensor.co.kr
   
-- POC2021
+- POC 2022-4 센서 
   - www.thepoc.co.kr 
   - ![image](https://github.com/user-attachments/assets/da8905f3-8942-4021-9040-b4262d1ab533)
   - ![image](https://github.com/user-attachments/assets/828b1605-6aa3-4511-ae3f-79f6155ceb82)
