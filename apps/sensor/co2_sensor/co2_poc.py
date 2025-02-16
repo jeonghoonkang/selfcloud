@@ -45,8 +45,8 @@ def pass2file(ins):
     logclass = berepi_logger.selfdatalogger()
     logclass.set_logger('CO2_POC')
 
-    logclass.berelog('co2 ppm', str(ins), 'CO2_POC')
-    print ('co2 ppm', str(ins), 'CO2_POC')
+    logclass.berelog('co2 ppm', str(ins), 'CO2_POC ')
+    print ('co2 ppm', str(ins), 'CO2_POC ')
 
 if __name__ == "__main__":
     if len(sys.argv) > 1 :
