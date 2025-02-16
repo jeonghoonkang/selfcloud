@@ -7,46 +7,63 @@ from logging.handlers import RotatingFileHandler
 import sys
 import os
 
-BNAME = "/home/tinyos/devel_opment/"
-#logging.config.fileConfig('logging.conf')
-LOG_FILENAME = BNAME + "selfcloud/apps/log/berelogger_co2.log"
+class selfdatalogger:
+    def __init__(self):
+        self.name = 'selfdatalogger'
+        self.BNAME = "/home/tinyos/devel_opment/log/"
+        self.LOG_FILENAME = None
+        self.logger = None
 
-if not os.path.exists(LOG_FILENAME):
-    with open(LOG_FILENAME, 'w') as file :
-        file.close()
-        
+    def set_logger(self, sensor_type):
 
-logger = logging.getLogger('BereLogger')
-logger.setLevel(logging.DEBUG)
+        # file 이름 정의 
+        if sensor_type != None:
+            if sensor_type.find('CO2') != -1:
+                sensor_type = 'berelogger_' + sensor_type
+            elif sensor_type.find('DUST') != -1:
+                sensor_type = 'berelogger_' + sensor_type
 
-# Choose TimeRoatatingFileHandler or RotatingFileHandler 
-#handler = logging.handlers.TimedRotatingFileHandler(filename=LOG_FILENAME, when="midnight", interval=1, encoding="utf-8")
-handler = logging.handlers.RotatingFileHandler(LOG_FILENAME, mode='a', maxBytes=2000000, backupCount=9)  # 2메가 파일 10개 까지 저장 (1년정도 데이터양)
-handler.formatter = logging.Formatter('%(asctime)s [%(levelname)s] %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+        self.LOG_FILENAME = self.BNAME + sensor_type + ".log"
 
-logger.addHandler(handler)
+        if not os.path.exists(self.LOG_FILENAME):
+            with open(self.LOG_FILENAME, 'w') as file :
+                file.close()
 
-# API for outside 
-def berelog(msg_name, value=None):
-    print ("logging to", LOG_FILENAME, 'log file name')
-    if (value == None):
-        logger.info(msg_name )
-    elif (value != None):
-        logger.info(msg_name + ' ==> ' + value)
+        self.logger = logging.getLogger('BereLogger')
+        self.logger.setLevel(logging.DEBUG)
+
+        # Choose TimeRoatatingFileHandler or RotatingFileHandler 
+        #handler = logging.handlers.TimedRotatingFileHandler(filename=LOG_FILENAME, when="midnight", interval=1, encoding="utf-8")
+        handler = logging.handlers.RotatingFileHandler(self.LOG_FILENAME, mode='a', maxBytes=2000000, backupCount=9)  # 2메가 파일 10개 까지 저장 (1년정도 데이터양)
+        handler.formatter = logging.Formatter('%(asctime)s [%(levelname)s] %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+        self.logger.addHandler(handler)
+
+    def berelog(self, msg_name, value=None, sensor_type=None):
+
+        if (value == None):
+            self.logger.info(msg_name )
+        elif (value != None):
+            self.logger.info(msg_name + ' ==> ' + value)
+            print ("logging to", self.LOG_FILENAME, 'log file name', value)
 
 
+# # overload API for outside 
+# def berelog(msg_name, value=None, sensor_type=None):
+#     if sensor_type != None:
+#         sensor_type = '_' + sensor_type
 
-# overload API for outside 
-def berelog(msg_name, value=None, sensor_type=None):
-    if sensor_type != None:
-        sensor_type = '_' + sensor_type
+#     LOG_FILENAME = BNAME + "/log/" + "berelogger" + sensor_type + ".log"
 
-    LOG_FILENAME = BNAME + "selfcloud/apps/log/" + "berelogger" + sensor_type + ".log"
-    print ("logging to", LOG_FILENAME, 'log file name')
-    if (value == None):
-        logger.info(msg_name )
-    elif (value != None):
-        logger.info(msg_name + ' ==> ' + value)
+#     if not os.path.exists(LOG_FILENAME):
+#         with open(LOG_FILENAME, 'w') as file :
+#             file.close()
+
+#     print ("logging to", LOG_FILENAME, 'log file name')
+
+#     if (value == None):
+#         logger.info(msg_name )
+#     elif (value != None):
+#         logger.info(msg_name + ' ==> ' + value)
 
 
 def args_proc():
@@ -85,5 +102,3 @@ if __name__ == "__main__":
 To do:
     LOG_FILENAME has to have sensor name on the file name
 '''
-
-
