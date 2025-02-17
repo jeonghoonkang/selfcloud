@@ -26,8 +26,14 @@ class selfdatalogger:
         self.LOG_FILENAME = self.BNAME + sensor_type + ".log"
 
         if not os.path.exists(self.LOG_FILENAME):
-            with open(self.LOG_FILENAME, 'w') as file :
-                file.close()
+            log_directory = os.path.dirname(self.LOG_FILENAME)
+
+            # Create directory if it does not exist
+            if log_directory and not os.path.exists(log_directory):
+                os.makedirs(log_directory)
+
+        with open(self.LOG_FILENAME, 'w') as file :
+            file.close()
 
         self.logger = logging.getLogger('BereLogger')
         self.logger.setLevel(logging.DEBUG)
