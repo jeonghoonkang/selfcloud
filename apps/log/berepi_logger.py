@@ -7,6 +7,14 @@ from logging.handlers import RotatingFileHandler
 import sys
 import os
 
+import socket
+import fcntl
+import struct
+
+import datetime
+
+from pytz import timezone
+
 class selfdatalogger:
     def __init__(self):
         self.name = 'selfdatalogger'
@@ -91,21 +99,9 @@ To do:
 '''
 
 ''' 
-# -*- coding: utf-8 -*-
-# Author : JeongooonKang (github.com/jeonghoonkang)
 
-#import json
-import time
-import socket
-import fcntl
-import struct
-import os
-import sys
 
-import datetime
 
-#import requests
-from pytz import timezone
 
 LOG_FILE = "/home/tinyos/devel_opment/BerePi/logs/berelogger.log" #정확한 경로 지정 필요
 
