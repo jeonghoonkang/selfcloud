@@ -32,8 +32,8 @@ class selfdatalogger:
             if log_directory and not os.path.exists(log_directory):
                 os.makedirs(log_directory)
 
-        with open(self.LOG_FILENAME, 'w') as file :
-            file.close()
+            with open(self.LOG_FILENAME, 'w') as file :
+                file.close()
 
         self.logger = logging.getLogger('BereLogger')
         self.logger.setLevel(logging.DEBUG)
