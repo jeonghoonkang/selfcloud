@@ -151,8 +151,6 @@ if __name__ == "__main__" :
     print (message)
     #print ("finish end, good bye .... ")
 
-#https://api.telegram.org/bot5049312606:AAFjPh0VYhpxgh-J2VJsjGzP8NW7HAxzxng/sendMessage?chat_id=-1001170927838&text=%EA%B7%B8%EB%A3%B9
-#https://api.telegram.org/bot5049312606:AAFjPh0VYhpxgh-J2VJsjGzP8NW7HAxzxng/getUpdates
 
 2025-02-18 07:15:04 [INFO] CO2_POC co2 ppm ==> 1023
 
