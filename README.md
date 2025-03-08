@@ -29,7 +29,10 @@
 
 
 ## Requirements
-## Installation Ubuntu
+- Installation Ubuntu
+- python3 which is "/usr/lib/python3.12/EXTERNALLY-MANAGED.old" since it hase many permission issues
+  - serial port permission
+  - log file creation issue    
 ## Structure of self cloud system
 ## Application (응용SW)
 ### motion
