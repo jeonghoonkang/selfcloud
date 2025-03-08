@@ -13,7 +13,7 @@ import struct
 
 import datetime
 
-from pytz import timezone
+import pytz
 
 class selfdatalogger:
     def __init__(self):
@@ -25,11 +25,16 @@ class selfdatalogger:
     def set_logger(self, sensor_type):
 
         # file 이름 정의 
+        # Sensor type에 따라서 파일 이름이 다르게 설정, such as CO2_POC
         if sensor_type != None:
             if sensor_type.find('CO2') != -1:
                 sensor_type = 'berelogger_' + sensor_type
             elif sensor_type.find('DUST') != -1:
                 sensor_type = 'berelogger_' + sensor_type
+            elif sensor_type.find('TEST') != -1:
+                sensor_type = 'berelogger_' + sensor_type
+        else:
+            sensor_type = 'berelogger_' + 'No_sensor_type'
 
         self.LOG_FILENAME = self.BNAME + sensor_type + ".log"
 
@@ -66,7 +71,7 @@ def args_proc():
     num_of_args = len(sys.argv)
     if num_of_args < 2:
        print('current number of args -->  ', num_of_args )
-       exit("[bye] you have to write input args ")
+       exit("[bye] you have to write input args for test")
 
     arg=[0 for i in range(num_of_args)]
     for loop_num in range(num_of_args): 
@@ -79,7 +84,11 @@ def args_proc():
 if __name__ == "__main__":
 
     args = args_proc()
-    berelog('logging cpu temp', args[1])
+
+    log = selfdatalogger()
+    log.set_logger('TEST')
+
+    log.berelog('logging test value', args[1], 'TEST')
     
     # 'application' code
     #logger.debug('debug message')
