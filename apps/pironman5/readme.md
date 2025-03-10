@@ -19,6 +19,9 @@ cd ~/pironman5
 sudo python3 install.py
 </pre>
 
+![image](https://github.com/user-attachments/assets/f943ac93-7123-4d93-b1f8-596483766a10)
+
+
 - Web dashboard port : 34001
 - influxdb : 8086
 
