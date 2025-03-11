@@ -65,6 +65,55 @@ class selfdatalogger:
             self.logger.info( sensor_type + msg_name + ' ==> ' + value)
             print ("logging to", self.LOG_FILENAME, 'log file name', value)
 
+    # def get_value_func(self, target_str):
+        
+    #     if target_str == None:
+    #         exit ("you should input target string to find. at ", __file__)
+
+    #     with open(self.LOG_FILENAME) as m:
+    #     msg = m.read() 
+    #     index = msg.rfind(target_str)
+    #     if index < 0:
+    #         exit( " Problem : can not find string in logfile ", self.LOG_FILENAME")   
+        
+    #     if target_str.rfind(PM2.5):
+    #         msg = msg[index-28:] #28 is for the exact position
+    #         elif target_str.rfind(CO2):
+    #             msg =  msg[index-28:] #28 is for the exact position
+        
+    #     print (msg)
+    #     exit()
+    #     return msg
+
+
+def get_value_func(target_str, path):
+    
+    LOG_FILENAME = path
+
+    if target_str == None:
+        exit ("you should input target string to find. at ", __file__)
+
+    with open(LOG_FILENAME) as m:
+        msg = m.read() 
+        index = msg.rfind(target_str)
+        if index < 0:
+            exit( " Problem : can not find string in logfile ", target_str, self.LOG_FILENAME )   
+    
+    if target_str.rfind(target_str):
+        msg = msg[index-28:] #28 is for the exact position
+    elif target_str.rfind(target_str):
+        msg =  msg[index-28:] #28 is for the exact position
+    
+    _msg_date = msg[0:19] 
+    _ret_msg = msg[46:51] # we should make proper index, co2 
+    measure_val = (_ret_msg)
+
+    print (msg)
+    print (_msg_date)
+    print (_ret_msg)
+    exit()
+    return msg
+
 
 def args_proc():
  
@@ -81,14 +130,19 @@ def args_proc():
     return arg
 
 
+
 if __name__ == "__main__":
 
-    args = args_proc()
+    p = '/home/tinyos/devel_opment/log/berelogger_CO2_POC.log'
 
-    log = selfdatalogger()
-    log.set_logger('TEST')
+    get_value_func("co2", p)
 
-    log.berelog('logging test value', args[1], 'TEST')
+
+    # args = args_proc()
+
+    # log = selfdatalogger()
+    # log.set_logger('TEST')
+    # log.berelog('logging test value', args[1], 'TEST')
     
     # 'application' code
     #logger.debug('debug message')
@@ -110,7 +164,18 @@ To do:
 ''' 
 
 
+import json
+import time
+import socket
+import fcntl
+import struct
+import os
+import sys
 
+import datetime
+
+#import requests
+from pytz import timezone
 
 LOG_FILE = "/home/tinyos/devel_opment/BerePi/logs/berelogger.log" #정확한 경로 지정 필요
 
