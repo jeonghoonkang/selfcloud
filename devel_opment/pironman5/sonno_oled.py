@@ -5,6 +5,8 @@ from pm_auto.pm_auto import PMAuto
 ### This file run by sudo crontab
 ### @reboot python3 /home/tinyos/devel_opment/selfcloud/devel_opment/pironman5/sonno_oled.py
 
+import berepi_logger
+
 config = {
   #"peripherals": ['oled','ws2812','gpio_fan','pwm_fan',],
   "peripherals": ['oled',],
