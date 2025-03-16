@@ -20,6 +20,7 @@ pm = PMAuto(temp1)
 
 ### decide what to run
 ### one shot
+pm.stop()
 pm.onshot()
 
 ### periodic every 1 sec.
