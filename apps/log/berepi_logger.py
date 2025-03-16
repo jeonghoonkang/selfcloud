@@ -10,10 +10,10 @@ import os
 import socket
 import fcntl
 import struct
+import pytz
 
 import datetime
 
-import pytz
 
 class selfdatalogger:
     def __init__(self):
@@ -177,7 +177,7 @@ import datetime
 #import requests
 from pytz import timezone
 
-LOG_FILE = "/home/tinyos/devel_opment/BerePi/logs/berelogger.log" #정확한 경로 지정 필요
+LOG_FILE = "/home/tinyos/logs/berelogger.log" #정확한 경로 지정 필요
 
 def add_usr_func(target_str):
     with open(LOG_FILE) as m:
