@@ -15,7 +15,7 @@ import datetime
 from pytz import timezone
 
 
-LOG_FILE = "/home/****/devel_opment/log/berelogger_CO2_POC.log" #정확한 경로 지정 필요
+LOG_FILE = "/home/tinyos/devel_opment/log/berelogger_CO2_POC.log" #정확한 경로 지정 필요
 
 def add_usr_func(target_str):
     try:
@@ -31,7 +31,40 @@ def add_usr_func(target_str):
         exit(0)
     return msg
 
+
+'''
+sample log file
+2025-02-18 00:45:04 [INFO] CO2_POC co2 ppm ==> 853
+2025-02-18 00:48:04 [INFO] CO2_POC co2 ppm ==> 857
+2025-02-18 00:51:04 [INFO] CO2_POC co2 ppm ==> 860
+2025-02-18 00:54:04 [INFO] CO2_POC co2 ppm ==> 866
+'''
+sensor_list = ["CO2_POC", "PM25_DUST"] #if you have more sensor which is suported, add more
+
+def get_value_log(sensor_name):
+
+    if not sensor_name in sensor_list:
+        print ("sensor name is not in the list", sensor_list)
+        print ("log file probably in the /home/****/devel_opment/log/berelogger_CO2_POC.log")
+        exit(0)
+    
+    _msg = add_usr_func(sensor_name)
+    _msg_date = _msg[0:19] 
+    if sensor_name == "CO2_POC":
+        _ret_msg = _msg[46:50] # we should make proper index
+        measure_val = (_ret_msg)
+
+    if _ret_msg[-1:] == '(': # last '(' character should be deleted
+        _ret_msg = _ret_msg[:-1]
+        measure_val = (_ret_msg)
+
+    return measure_val
+
 if __name__ == "__main__" :
+
+
+    print (get_value_log("CO2_POC"))
+    exit(0)
 
     _limit = sys.argv[1]  # limit value, 0 means no limit
 
