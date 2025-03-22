@@ -6,7 +6,7 @@
 
 # sudo python3 $(realpath ./co2_poc.py)
 # sudo crontab 
-# */3 * * * *     python3 /home/***t/selfcloud/apps/sensor/co2_sensor/co2_poc.py
+# */3 * * * *     python3 /home/***t/selfcloud/apps/sensor/co2_sensor/co2_poc.py >2$ /home/{user}/crontab.log
 
 import serial
 import time
