@@ -18,7 +18,9 @@ pm = PMAuto(temp1)
 
 ### decide what to run
 ### one shot
-pm.stop()
+#pm.stop()
+print ("sonno : usage", dir(pm))
+#pm.close()
 pm.onshot()
 
 ### periodic every 1 sec.

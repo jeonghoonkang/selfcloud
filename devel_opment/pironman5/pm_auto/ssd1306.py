@@ -246,16 +246,21 @@ class SSD1306():
             get_logger = logging.getLogger
         self.log = get_logger(__name__)
 
+        print ("sonno: START FLOW ====> ", __file__)
+
+
         self._is_ready = False
         self.oled = None
         self.rotation = 0
         if not I2C.enabled():
             _, result = run_command("ls /dev/i2c*")
             self.log.error(f"I2C is not enabled. ls /dev/i2c* returned: \n{result}")
+            print ("I2C is not enabled. ls /dev/i2c* returned: \n{result}")
         else:
             addresses = self.check_oled()
             if len(addresses) == 0:
                 self.log.error("No OLED found")
+                print ("sonno: No OLED found")
             else:
                 self.oled = SSD1306_128_64(i2c_address=addresses[0])
                 self.init()

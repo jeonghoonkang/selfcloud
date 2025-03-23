@@ -1,21 +1,24 @@
 import time
 import threading
 import sys, os
+
+#from sf_rpi_status import status 
+
 from sf_rpi_status import \
-    get_cpu_temperature, \
-    get_cpu_percent, \
-    get_memory_info, \
-    get_disks_info, \
-    get_ips, \
-    shutdown
+     get_cpu_temperature, \
+     get_cpu_percent, \
+     get_memory_info, \
+     get_disks_info, \
+     get_ips, \
+     shutdown
 
 from .utils import format_bytes, has_common_items, log_error
 
 from .fan_control import FanControl, FANS
 
 import inspect 
-sys.path.append('/home/tinyos/devel_opment/selfcloud/apps/log')
 
+sys.path.append('/home/tinyos/devel_opment/selfcloud/apps/log')
 import berepi_logger
 
 def find_module_path(module_name):
@@ -49,7 +52,7 @@ class PMAuto():
     def __init__(self, peripherals=[], get_logger=None):
 
         config = DEFAULT_CONFIG
-        print("sonno: ", config)
+        #print("sonno: ", config)
 
         if get_logger is None:
             import logging
@@ -64,6 +67,9 @@ class PMAuto():
         self.spc = None
         if 'oled' in peripherals:
             self.log.debug("Initializing OLED")
+
+            print ("sonno: START FLOW", __file__)
+
             self.oled = OLEDAuto(config, get_logger=get_logger)
             if not self.oled.is_ready():
                 self.log.error("Failed to initialize OLED")
@@ -173,13 +179,13 @@ class PMAuto():
     #sonno add for one shot 
     def onshot(self):
 
+        print (dir(self.oled.oled))
 
-        #self.oled.close()
         print ("sonno olded class :", inspect.getfile(self.oled.__class__))
 
-        #print (self.oled)
+        self.oled.close()
+        self.oled.oled.wake()
 
-      
         if self.oled is not None and self.oled.is_ready():
             self.oled.run()
         else:
@@ -209,9 +215,13 @@ class OLEDAuto():
 
         self.oled = OLED(get_logger=get_logger)
         self.Rect = Rect
+
+        print (inspect.getfile(self.oled.__class__))
+        print ("sonno : OLEDAuto", dir(self.oled))
+
         if not self.oled.is_ready():
             self.log.error("Failed to initialize OLED")
-            print ("sonno : Failed to initialize OLED")
+            print ("sonno : Failed to initialize OLED @", __file__)
             return
         self._is_ready = self.oled.is_ready()
         
@@ -224,9 +234,9 @@ class OLEDAuto():
         self.oled_disk = OLED_DEFAULT_CONFIG['oled_disk']
         self.ip_interface = OLED_DEFAULT_CONFIG['oled_network_interface']
         self.update_config(config)
-
         #jhkang
         self.disp_date = None
+
 
 
     @log_error
@@ -393,16 +403,15 @@ class OLEDAuto():
 
         # draw the image buffer
 
-
         self.oled.oled.display()
 
     @log_error
     def run(self): #jhkang OLEDAuto run
+
         if self.oled is None or not self.oled.is_ready() or not self.oled_enable:
             # Clear draw buffer
-            # self.oled.clear()
+            self.oled.clear()
             # draw the image buffer
-
             self.oled.display()
             return
 

@@ -36,6 +36,8 @@ class OLED():
             return
         self._is_ready = self.oled.is_ready()
 
+        print ("sonno: START FLOW", __file__)
+
         self.temperature_unit = OLED_DEFAULT_CONFIG['temperature_unit']
         self.disk_mode = OLED_DEFAULT_CONFIG['oled_disk']
         self.ip_interface = OLED_DEFAULT_CONFIG['oled_network_interface']
