@@ -1,5 +1,7 @@
 
-## 하드웨어 설치 방법
+## PIROMAN5 하드웨어  조립 방법
+  - 조립방법(https://github.com/sonnonet/selfcloud/edit/main/installation/PIRONMAN5_Assembly_instructions.pdf)
+
 ### 디바이스 
 -  <img width="800" alt="image" src="https://github.com/jeonghoonkang/selfcloud/assets/4180063/212087a6-6af8-4608-ae41-56a3e213a949">
 
