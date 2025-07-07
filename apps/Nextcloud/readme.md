@@ -5,6 +5,8 @@
 - cd ~/IOTstack
 - sudo ./menu.sh 실행하여, 메뉴로 선택 docker-compose.yml 생성 
   - 이후 메뉴에 따라 설치 [메뉴설치](<a href target=_blank > iostack_run.md </a>) 
+- docker-compose.yml 수정
+  - ${VOL_PATH}/photo_volume:/Photo 
 
 ## 문제 발생시, 설치 완료 불가능
 ### python 3.11 외부 설정 문제
